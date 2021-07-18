@@ -1,0 +1,173 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons class="ion-padding-start" slot="start">
+      <ion-back-button
+        text=""
+        defaultHref="/"
+        icon="arrow-back-outline"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary dealer-header">
+    <ion-row>
+      <ion-col
+        ><div class="ion-text-center">
+          <h3>Buyer Account</h3>
+        </div></ion-col
+      >
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-list>
+        <ion-list-header class="list-label-header">
+          General Information
+        </ion-list-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label class="label" position="floating">
+                <p>First Name</p>
+              </ion-label>
+              <ion-input formControlName="FName"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label class="label" position="floating">
+                <p>Middle Name</p>
+              </ion-label>
+              <ion-input formControlName="MName"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label class="label" position="floating">
+                <p>Last Name</p>
+              </ion-label>
+              <ion-input formControlName="LName"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Email Address</p>
+          </ion-label>
+          <ion-input type="email" formControlName="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Date of Birth</p>
+          </ion-label>
+          <ion-datetime formControlName="Date_of_Birth"></ion-datetime>
+        </ion-item>
+        <ion-list-header class="list-label-header">
+          Contact Details
+        </ion-list-header>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Telephone No.</p>
+          </ion-label>
+          <ion-input type="number" formControlName="TelNo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Country</p>
+          </ion-label>
+          <ion-select
+            (ionChange)="onChangeCountry($event)"
+            formControlName="Country_ID"
+          >
+            <ion-select-option
+              *ngFor="let country of countries"
+              value="{{country.tbl_country_id}}"
+              >{{country.country}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Region</p>
+          </ion-label>
+          <ion-select
+            (ionChange)="onChangeRegion($event)"
+            formControlName="Region_ID"
+          >
+            <ion-select-option
+              *ngFor="let region of regions"
+              value="{{region.tbl_region_id}}"
+              >{{region.tbl_region_desc}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Province</p>
+          </ion-label>
+          <ion-select
+            (ionChange)="onChangeProvince($event)"
+            formControlName="Province_ID"
+          >
+            <ion-select-option
+              *ngFor="let province of provinces"
+              value="{{province.tbl_province_id}}"
+            >
+              {{province.tbl_province_desc}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>City</p>
+          </ion-label>
+          <ion-select
+            (ionChange)="onChangeCity($event)"
+            formControlName="City_ID"
+          >
+            <ion-select-option
+              *ngFor="let city of cities"
+              value="{{city.tbl_city_id}}"
+              >{{city.tbl_city_desc}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Barangay</p>
+          </ion-label>
+          <ion-select formControlName="Brgy_ID">
+            <ion-select-option
+              *ngFor="let barangay of barangays"
+              value="{{barangay.tbl_brgy_id}}"
+              >{{barangay.tbl_brgy_desc}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Street No.</p>
+          </ion-label>
+          <ion-input formControlName="Add_StreetNo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label" position="floating">
+            <p>Street</p>
+          </ion-label>
+          <ion-input formControlName="Add_Street"></ion-input>
+        </ion-item>
+        <ion-button
+          class="ion-padding-start ion-padding-end ion-margin-top btn_sign_up"
+          expand="block"
+          (click)="signUp()"
+          [disabled]="form.invalid"
+          >Submit</ion-button
+        >
+      </ion-list>
+    </ion-grid>
+  </form>
+</ion-content>

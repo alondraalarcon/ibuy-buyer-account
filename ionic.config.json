@@ -1,5 +1,7 @@
 {
   "name": "Buyer",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
